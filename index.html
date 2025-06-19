@@ -1,0 +1,50 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Song Request</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- **CHANGE**: Corrected path to stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-content">
+        <div class="container">
+            <h1>Request a Song</h1>
+            <p class="price-info">Price per request: CHF 1.00</p>
+
+            <form id="songRequestForm" onsubmit="return false;"> <!-- Prevent default form submission -->
+                <div class="form-group">
+                    <label for="name">Your Name (Optional):</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="songTitle">Song Title (Required):</label>
+                    <input type="text" id="songTitle" name="songTitle" required>
+                </div>
+                <!-- **** FIX: Added id="payButton" to this link **** -->
+                <a id="payButton" class="btn-payrexx btn-payrexx-modal" href="https://dj-n744.payrexx.com/pay?tid=ec96356d">
+                    Bezahlen
+                </a>
+            </form>
+            <div id="messageArea"></div>
+        </div>
+
+        <!-- Public Queue Section -->
+        <div class="public-queue-container">
+            <h2>Live Song Queue</h2>
+            <ul id="public-queue-list">
+                <li class="loading">Loading queue...</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://media.payrexx.com/modal/v1/modal.min.js"></script>
+    <!-- **CHANGE**: Corrected path to script -->
+    <script src="script.js"></script>
+</body>
+</html>

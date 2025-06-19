@@ -1,0 +1,18 @@
+{
+  "name": "dj-song-request-app",
+  "version": "1.0.0",
+  "description": "A website for DJ Song Requests with a persistent queue and admin panel.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "lowdb": "^7.0.1"
+  }
+}

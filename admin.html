@@ -1,0 +1,58 @@
+<!-- admin.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Song Requests</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <a href="/admin/logout" class="btn btn-secondary">Logout</a>
+        </header>
+
+        <div class="controls">
+             <button id="saveOrderBtn" class="btn">Save Order</button>
+             <button id="clearPlayedBtn" class="btn btn-secondary">Clear Played Songs</button>
+             <p>Drag and drop pending songs to re-order the public queue.</p>
+        </div>
+       
+        <div id="message-area"></div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Song Title</th>
+                    <th>Name</th>
+                    <th>Timestamp</th>
+                    <th>Payment Ref.</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="request-list">
+                <% songRequests.forEach(request => { %>
+                    <tr data-id="<%= request.id %>" class="status-<%= request.status %>">
+                        <td><span class="status-badge"><%= request.status %></span></td>
+                        <td><%= request.songTitle %></td>
+                        <td><%= request.name %></td>
+                        <td><%= new Date(request.timestamp).toLocaleString() %></td>
+                        <td><%= request.paymentReference %></td>
+                        <td>
+                            <% if (request.status === 'pending') { %>
+                                <button class="btn-action btn-played" data-id="<%= request.id %>">Mark as Played</button>
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
